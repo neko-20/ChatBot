@@ -1,0 +1,17 @@
+# composeファイル形式のバージョン
+version: "3"
+services:
+  # services名
+  web:
+    # Dockerfileへのパスを指定
+    build: .
+    # ホスト側ポートとコンテナ側ポートのマッピング
+    ports:
+      - "5001:5000"
+    # ホストの ./app をコンテナの /app にマウント
+    volumes:
+      - ./app:/app
+    # コンテナ名
+    container_name: flask-api
+    # コンテナを継続起動するため
+    tty: true
